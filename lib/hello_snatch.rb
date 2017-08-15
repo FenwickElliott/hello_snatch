@@ -1,12 +1,12 @@
 require "hello_snatch/version"
+require "hello_snatch/headers"
 require "pry"
 
 module HelloSnatch
   class Serve
+    include HelloSnatch::Headers
     def call(env)
-      binding.pry if env["HTTP_PRY"]
-      puts env.inspect if env["HTTP_PUTS_ENV"]
-      puts eval env["HTTP_PUTS_THIS"] if env["HTTP_PUTS_THIS"]
+      self.check_for_flags(env)
 
       [200, {}, ["Catch-all response heard #{env["REQUEST_PATH"]}\n"]]
     end
