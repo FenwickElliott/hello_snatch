@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+A very basic and lightweight web framework.
+
+## Custom Headers
+"pry: true" - class binding.pry
+"puts_env: true" - puts env
+"puts_this: parameter: - puts that parameter
+
 
 ## Development
 
