@@ -12,7 +12,7 @@ module HelloSnatch
       temp = File.dirname(__FILE__) + "/views#{env['PATH_INFO']}.html.erb"
 
       if File.exist?(temp)
-        [200, {'Content-Type' => 'text/html'}, [File.read(temp)]]
+        [200, {'Content-Type' => 'text/html'}, [Erubis::Eruby.new(File.read(temp)).result(binding())]]
       else
         [404, {'Content-Type' => 'text/html'}, [File.read(File.dirname(__FILE__) + "/views/404.html.erb")]]
       end
